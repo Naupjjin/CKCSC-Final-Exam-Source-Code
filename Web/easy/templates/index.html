@@ -12,9 +12,43 @@
 <body>
     {% include 'navbar.html' %}
     
-    
+    <header class="py-5" style="background-color: #979797; background-image: url('static/BG.jpg');background-size: cover;background-repeat:no-repeat;background-position: center center;;">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center justify-content-center position-relative" style="background-color: rgba(255, 234, 248, 0.769);">
+                <div class="col-lg-8 col-xl-7 col-xxl-6">
+                    <div class="my-5 text-center text-xl-start">
+                        <h1 class="display-5 fw-bolder mb-2 font-weight-bold" style="color: #212529; font-size:4rem;">橘花學院</h1>
+                        <br><br>
+                        <p class="lead fw-normal  mb-4 font-weight-bold" style="color: #495057;">世界裡存在一種超自然神秘力量，一開始人們稱之為「超能力」，但在20世紀末時，人們又發現它與一種粒子「星幽子」對人類大腦的作用有關，因此人們後來又將這種力量改稱為「星幽術」；而相對的，對於能夠使用這種力量的人，人們稱之為「星幽使」。</p>
+                        <br><br>
+
+                        <h6>#本網頁為《RIDDLE JOKER》沒有贊助的非官方學院官網，有興趣可以了解《RIDDLE JOKER》</h6>
+                        <br><br>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                            <br></br>
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3 font-weight-bold" style="background-color: #212529;" href="{{url_for('staryu')}}">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <header class="py-5" style="background-color: #979797; background-image: url('static/BG2.jpg');background-size: cover;background-repeat:no-repeat;background-position: center center;;">
+        <div class="container px-5">
+            
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+            </div>
+                
+         
+        </div>
+    </header>
   
-   
+    {% include 'footer.html' %}
  
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
