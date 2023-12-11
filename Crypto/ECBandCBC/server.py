@@ -64,6 +64,9 @@ def stage():
 
 
 try:
+    print("-"*30)
+    print("")
+    print("-"*30)
     key1_m = generate_random_string(20)+"-key1"
     print("encrypt key1:",affine_encrypt(key1_m))
 
