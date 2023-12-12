@@ -54,26 +54,36 @@ def stage():
     else:
         exit()
     
-
+    print("沒想到你這麼強，準備來好破解我的秘密啦!")
     aes = AES.new(KEY, AES.MODE_ECB)
     
     while True:
-        message = bytes.fromhex(input('message = ').strip())
+        message = bytes.fromhex(input('You can input some words > ').strip())
         cipher = aes.encrypt(pad(message + FLAG))
+        print("encrypt...")
+        print("-"*30)
         print(f'cipher = {cipher.hex()}')
+        print("-"*30)
+
+
+        
 
 
 try:
     print("-"*30)
-    print("")
+    print("你好呀!我是由人稱天才少女的佐倉雙葉主人所製作密碼盒，可以叫我-小綾~")
+    print("如果你能夠破解我的話，我就會告訴你我的秘密喔~")
+    print("不過在正式開始前，先給你一個小測試，要是你能找到兩把key，就可以獲得挑戰的權利!")
     print("-"*30)
     key1_m = generate_random_string(20)+"-key1"
     print("encrypt key1:",affine_encrypt(key1_m))
 
     key2_m = generate_random_string(20)+"-key2"
     print("encrypt key2:",base(key2_m))
-
+    print("-"*30)
     stage()
     
 except:
+    print()
+    print("我已經停止運作囉!不知道~你有沒有成功找出我的秘密")
     exit()
