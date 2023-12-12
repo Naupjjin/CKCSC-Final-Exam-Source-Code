@@ -9,5 +9,5 @@ WORKDIR /app
 COPY ./src /app/
 RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
 
-EXPOSE 600001
+EXPOSE 50000
 ENTRYPOINT ["socat", "tcp-listen:20000,fork", "EXEC:'python3 server.py'"]

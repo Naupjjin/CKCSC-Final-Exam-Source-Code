@@ -1,5 +1,6 @@
 import sqlite3
 from flask import *
+import json
 app = Flask(__name__)
 
 @app.route("/")
@@ -17,7 +18,7 @@ def login():
     cursor = conn.cursor()
 
     query = f"SELECT id, username FROM users WHERE username = '{username}' AND password = '{password}'"
-    print(query)
+
     cursor.execute(query)
 
     user = cursor.fetchone()
@@ -48,7 +49,7 @@ def login2():
     cursor = conn.cursor()
 
     query = f"SELECT id, username FROM users WHERE username = '{username}' AND password = '{password}'"
-    print(query)
+ 
     cursor.execute(query)
 
     user = cursor.fetchone()
@@ -64,13 +65,16 @@ def login2():
 def foshdfiaopreiaowjfpoaweituripowa():
     return render_template("home3.html")
 
-###
 @app.route("/login3", methods=["GET", "POST"])
 def login3():
- 
+        
+  
     password = request.values["password"]
-
-
+    
+    try:
+        password=json.loads(password)
+    except:
+        pass
 
     conn = sqlite3.connect('user_database.db')
     cursor = conn.cursor()
@@ -87,7 +91,5 @@ def login3():
         
     else:
         return render_template('lose.html')
-    
-
 if __name__ == "__main__":
     app.run(debug=True)
