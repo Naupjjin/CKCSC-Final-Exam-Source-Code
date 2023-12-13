@@ -69,27 +69,29 @@ def foshdfiaopreiaowjfpoaweituripowa():
 def login3():
         
   
-    password = request.values["password"]
-    
-    try:
-        password=json.loads(password)
-    except:
-        pass
+    data = request.get_json()
 
     conn = sqlite3.connect('user_database.db')
     cursor = conn.cursor()
-
-    query = f"SELECT id, username FROM users WHERE username = 'admin' AND password = '{password[0]}'"
-    print(query)
+    
+    
+    query = f"SELECT id, username FROM users WHERE username = 'admin' AND password = '{data['password'][0]}'"
+ 
     cursor.execute(query)
 
     user = cursor.fetchone()
 
     conn.close()
+    
     if user:
         return render_template('get_flag.html')
-        
     else:
         return render_template('lose.html')
+        
+
+    
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
