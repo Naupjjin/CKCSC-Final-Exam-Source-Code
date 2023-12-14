@@ -1,25 +1,30 @@
 from flask import *
 import jwt
 import os
+
 app = Flask(__name__)
+secret_key =os.urandom(3)
 
-class JWT:
-    def __init__(self):
-        self.key=os.urandom(3)
-        
-    def JWT_user(self):
-        
-        payload={"id":1 ,"role":"user"}
-        encoded_token = jwt.encode(payload, self.key, algorithm='HS256')
-        return encoded_token
 
-    def JWT_admin(self):
-        
-        payload={"id":2 ,"role":"admin"}
-        encoded_token = jwt.encode(payload, self.key, algorithm='HS256')
-        return encoded_token
+def JWT_user():
+    data = {'id': 2, 'role': "User"}
+
+    token = jwt.encode(data, secret_key, algorithm='HS256')
+    return token
+
+def JWT_admin():
+    data = {'id': 1, 'role': "Admin"}
+
+    token = jwt.encode(data, secret_key, algorithm='HS256')
+    return token
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    resp = make_response(render_template("index.html"))
+    print(secret_key)
+    resp.set_cookie(key='check', value=JWT_user())
+    return resp
 
+
+if __name__ == "__main__":
+    app.run(debug=True,host="0.0.0.0",port="10003")
