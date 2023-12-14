@@ -12,7 +12,7 @@ def generate_random_string(length):
     return random_string
 
 
-def affine_encrypt(plain_text):
+def dec_a(plain_text):
     a=77
     b=15
     encrypted_text=""
@@ -27,11 +27,23 @@ def affine_encrypt(plain_text):
             encrypted_text+=char
     return encrypted_text
 
-def base(key2_m):
+def dec_b(key2_m):
     j=key2_m.encode()
     for i in range(12):
         j=base64.b64encode(j)
     return j.decode()
+
+def dec_c(m,k):
+    chip = []
+    for i in range(0,len(m),k):
+        chip.append(m[i:i+k])
+    c = ""
+    for j in range(k):
+        for ch in chip:
+            if j < len(ch):
+                c += ch[j]
+    return c
+
 
 def pad(m):
     padlen = -len(m) % 16
@@ -50,6 +62,12 @@ def stage():
     key2_ans=input("key2?")
 
     if key2_m==key2_ans:
+        print("success!!")
+    else:
+        exit()
+
+    key3_ans=input("key3?")
+    if key3_m==key3_ans:
         print("success!!")
     else:
         exit()
@@ -73,13 +91,20 @@ try:
     print("-"*30)
     print("你好呀!我是由人稱天才少女的佐倉雙葉主人所製作密碼盒，可以叫我-小綾~")
     print("如果你能夠破解我的話，我就會告訴你我的秘密喔~")
-    print("不過在正式開始前，先給你一個小測試，要是你能找到兩把key，就可以獲得挑戰的權利!")
+    print("不過在正式開始前，先給你一個小測試，要是你能找到三把key，就可以獲得挑戰的權利!")
     print("-"*30)
-    key1_m = generate_random_string(20)+"-key1"
-    print("encrypt key1:",affine_encrypt(key1_m))
 
+    key1_m = generate_random_string(20)+"-key1"
+    print("encrypt key1:",dec_a(key1_m))
+    
+    print()
     key2_m = generate_random_string(20)+"-key2"
-    print("encrypt key2:",base(key2_m))
+    print("encrypt key2:",dec_b(key2_m))
+
+    print()
+    key3_m = generate_random_string(20)+"-key3"
+    print("encrypt key3:",dec_c(key3_m,11))
+
     print("-"*30)
     stage()
     
