@@ -22,8 +22,18 @@ def JWT_admin():
 def home():
     resp = make_response(render_template("index.html"))
     print(secret_key)
-    resp.set_cookie(key='check', value=JWT_user())
+    resp.set_cookie(key='ToKEn', value=JWT_user())
     return resp
+
+@app.route("/button")
+def button():
+    AD_TOKEN=JWT_admin()
+    cookie_value = request.cookies.get('ToKEn')
+    if cookie_value==AD_TOKEN:
+        return render_template("admin.html")
+    else:
+        return render_template("LOSE.html")
+    
 
 
 if __name__ == "__main__":
