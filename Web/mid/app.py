@@ -1,20 +1,53 @@
-from flask import *
-
+from flask import Flask, request, render_template_string, redirect
+import os
+import urllib.parse
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    resp = make_response(render_template("index.html"))
-    resp.set_cookie(key='VIP', value='68934a3e9455fa72420237eb05902327')
-    return resp
+base_directory = "message/"
+default_file = "message.txt"
 
-@app.route("/search")
-def search():
-    cookie_value = request.cookies.get('VIP')
-    if cookie_value!="b326b5062b2f0e69046810717534cb09":
-        return redirect(url_for('home'))
-    return render_template("search.html")
+def ignore_it(file_param):
+    yoooo = file_param.replace('.', '').replace('/', '')
+    if yoooo != file_param:
+        return "Illegal characters detected in file parameter!"
+    return yoooo
 
-if __name__ == "__main__":
-    app.run(debug=True,host="0.0.0.0",port="10003")
+def another_useless_function(file_param):
+    return urllib.parse.unquote(file_param)
+
+def url_encode_path(file_param):
+    return urllib.parse.quote(file_param, safe='')
+
+def useless (abcd):
+    aa = ignore_it(abcd)
+    bb = another_useless_function(aa)
+    cc = ignore_it(bb)
+    dd = another_useless_function(cc)
+    ee = another_useless_function(dd)
+    return ee
+
+
+@app.route('/')
+def index():
+    return redirect('/read_secret_message?file=message')
+
+@app.route('/read_secret_message')
+def read_file(abcd=None):
+    file_param = request.args.get('file')
+    file_param = useless(file_param)
+    print(file_param)
+    file_path = os.path.join(base_directory, file_param)
+
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+        return content
+    except FileNotFoundError:
+        return 'File not found! or maybe illegal characters detected'
+    except Exception as e:
+        return f'Error: {e}'
+
+
+if __name__ == '__main__':
+    app.run(debug=False, host='0.0.0.0', port=50002)
