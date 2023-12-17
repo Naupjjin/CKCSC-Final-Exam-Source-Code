@@ -64,7 +64,7 @@ def userPage():
 def login():
     username = request.values["username"]
     password = request.values["password"]
-    if username=="kaori@RIDDLE.JOKER" and password=="#1011":
+    if username=="kaori@RIDDLE.JOKER" and password=="#3009":
         session["role"]="admin"
         return redirect('adminPage')
     
