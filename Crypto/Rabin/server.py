@@ -8,10 +8,8 @@ def rabin_encrypt(plaintext, p, q):
     ciphertext = pow(plaintext, 2, n)
     return ciphertext
 
-
-
-p = 275127860351348928173285174381581152299
-q = 319576316814478949870590164193048041239
+p = "SECRET"
+q = "SECRET"
 plaintext = b'ckcscCTF{Fake_Flag}'
 plaintext = bytes_to_long(plaintext)
 ciphertext = rabin_encrypt(plaintext, p, q)
