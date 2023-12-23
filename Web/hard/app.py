@@ -2,6 +2,7 @@ import sqlite3
 from flask import *
 import json
 from flask_session import *
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
