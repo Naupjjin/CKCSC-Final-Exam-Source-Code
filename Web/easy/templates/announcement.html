@@ -9,23 +9,7 @@
 <body>
     
     {% include 'navbar.html' %}
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-center"></h2>
-                    </div>
-                    <div class="card-body">
-                        <a href="">分機</a>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        發布日期：2023-12-13
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8 offset-md-2">
@@ -34,7 +18,7 @@
                     <h2 class="text-center">各教職分機號</h2>
                 </div>
                 <div class="card-body">
-                    <a href="">分機</a>
+                    <a href="{{ url_for('static', filename='annfile/extension.pdf') }}">分機</a>
                 </div>
                 <div class="card-footer text-muted text-center">
                     發布日期：2023-12-11
@@ -74,7 +58,7 @@
                 </div>
                 <div class="card-body">
                     <p>教職員行政系統使用之說明</p>
-                    <a href="">說明文件</a>
+                    <a href="{{ url_for('static', filename='annfile/introduce.pdf') }}">說明文件</a>
                 </div>
                 <div class="card-footer text-muted text-center">
                     發布日期：2023-12-10

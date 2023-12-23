@@ -1,5 +1,6 @@
 from flask import *
 from flask_session import *
+
 import os
 app=Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
@@ -71,5 +72,16 @@ def login():
     else:
         return "LOSE"
 
+
+   
+@app.route('/download/<filename>')
+def download(filename):
+    if "role" not in session:
+        return "沒有權限"
+    if session["role"]!="admin":
+        return "沒有權限"
+    pdf_path = f'pdf/{filename}'
+    return send_from_directory("pdf", filename, as_attachment=False)
+    
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port="8080",debug=True)
