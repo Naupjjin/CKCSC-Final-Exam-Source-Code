@@ -55,7 +55,7 @@
         xhr.open("POST", "{{url_for('login3')}}", true);
         xhr.setRequestHeader("Content-type", "application/json");
       
-        // Convert the account object to JSON
+     
         var data = JSON.stringify(account);
       
         xhr.send(data);
