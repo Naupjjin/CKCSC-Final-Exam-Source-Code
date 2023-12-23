@@ -5,7 +5,7 @@ import os
 app=Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config['SESSION_TYPE'] = 'filesystem'
-Session(app)
+
 
 
 @app.route("/")
