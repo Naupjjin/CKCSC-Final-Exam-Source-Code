@@ -77,7 +77,7 @@ def stage():
     
     while True:
         message = bytes.fromhex(input('You can input some words > ').strip())
-        cipher = aes.encrypt(pad(message + FLAG))
+        cipher = aes.encrypt(pad(message + FLAG.encode()))
         print("encrypt...")
         print("-"*30)
         print(f'cipher = {cipher.hex()}')

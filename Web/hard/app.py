@@ -36,7 +36,7 @@ def login():
         return redirect('level2')
         
     else:
-        return render_template('get_flag.html')
+        return render_template('lose.html')
     
 @app.route("/level2")
 def level2():
