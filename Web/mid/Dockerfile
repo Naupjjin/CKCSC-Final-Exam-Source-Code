@@ -6,7 +6,6 @@ COPY app.py /app/app.py
 COPY message /app/message
 COPY flag.txt /app/flag.txt
 
-
 RUN apt-get update  \
     && useradd -m ctf-player \
     && chown -R ctf-player /app
